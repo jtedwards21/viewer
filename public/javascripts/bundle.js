@@ -21584,26 +21584,27 @@
 	  _createClass(Viewer, [{
 	    key: "processData",
 	    value: function processData(data) {
-	      console.log(data);
-	      var pages = data.query.pages;
+	      var pages = data.data.query.pages;
 	      var keys = Object.keys(pages);
 	      var untreatedHtml = pages[keys[0]].revisions['0']['*'];
 	      var text = untreatedHtml;
+	      console.log(text);
 	      this.setState({ articleText: text });
 	    }
 	  }, {
 	    key: "getData",
 	    value: function getData(title) {
-	      var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=' + title;
+	      var _this2 = this;
+
+	      var url = "/pages/" + title;
 	      (0, _axios2.default)(url).then(function (data) {
-	        console.log(data);
+	        _this2.processData(data);
 	      });
-	      //.then(data => {this.processData(data)});
 	    }
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.getData();
+	      this.getData("cat");
 	    }
 	  }, {
 	    key: "render",

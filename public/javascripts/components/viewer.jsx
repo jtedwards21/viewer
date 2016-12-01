@@ -13,21 +13,36 @@ export default class Viewer extends React.Component {
     this.processData.bind(this);
   }
   processData(data){
-    console.log(data);
-    var pages = data.query.pages;
+    var pages = data.data.query.pages;
     var keys = Object.keys(pages);
     var untreatedHtml = pages[keys[0]].revisions['0']['*'];
     var text = untreatedHtml;
+    text = this.rB(text);
+    text = this.processCitations(text);
+    console.log(text);
     this.setState({articleText: text});
   }
   getData(title){
     var url = "/pages/" + title;
     axios(url)
-    .then(data => {console.log(data)});
-    //.then(data => {this.processData(data)});
+    .then(data => {this.processData(data)});
   }
   componentDidMount() {
-    this.getData(); 
+    this.getData("cat"); 
+  }
+  rB(text) {
+  var r = text.split('[[');
+  var r = r.join('<span class="ln">');
+  var r = r.split(']]');
+  var r = r.join('</span>');
+  return r;
+  }
+  processCitations(text) {
+  html = text.split('{{');
+  html = html.join('<span class="cite">');
+  html = html.split('}}');
+  html = html.join('</span>');
+  return html;
   }
   render() {
     //These plastic pieces will have gradients to make them seem more real
