@@ -21575,35 +21575,35 @@
 	    _this.state = {
 	      articleText: ""
 	    };
+
+	    _this.getData.bind(_this);
+	    _this.processData.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Viewer, [{
 	    key: "processData",
-	    value: function processData() {}
-	  }, {
-	    key: "getData",
-	    value: function getData() {
-	      var _this2 = this;
-
-	      (0, _axios2.default)({
-	        method: 'post',
-	        url: 'https://en.wikipedia.org/w/api.php',
-	        data: {
-	          action: "query",
-	          list: "random",
-	          rnlimit: "5",
-	          format: "json"
-	        }
-
-	      }).then(function (data) {
-	        _this2.processData(data);
-	      });
+	    value: function processData(data) {
+	      console.log(data);
+	      var pages = data.query.pages;
+	      var keys = Object.keys(pages);
+	      var untreatedHtml = pages[keys[0]].revisions['0']['*'];
+	      var text = untreatedHtml;
+	      this.setState({ articleText: text });
 	    }
 	  }, {
-	    key: "componentDidRender",
-	    value: function componentDidRender() {
-	      getData(); //?
+	    key: "getData",
+	    value: function getData(title) {
+	      var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=' + title;
+	      (0, _axios2.default)(url).then(function (data) {
+	        console.log(data);
+	      });
+	      //.then(data => {this.processData(data)});
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.getData();
 	    }
 	  }, {
 	    key: "render",
@@ -21625,7 +21625,17 @@
 	              { className: "brandName" },
 	              "Wikipedia Viewer"
 	            ),
-	            _react2.default.createElement("div", { className: "screen" })
+	            _react2.default.createElement(
+	              "div",
+	              { className: "screen" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "wiki-page" },
+	                _react2.default.createElement("div", { className: "wiki-title" }),
+	                _react2.default.createElement("img", { className: "wiki-img" }),
+	                _react2.default.createElement("div", { className: "wiki-text" })
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            "div",

@@ -8,26 +8,26 @@ export default class Viewer extends React.Component {
     this.state = {
       articleText : ""
     };
-  }
-  processData(){
     
+    this.getData.bind(this);
+    this.processData.bind(this);
   }
-  getData(){
-    axios({
-	method: 'post',
-	url: 'https://en.wikipedia.org/w/api.php',
-        data: {
-	  action: "query",
-          list: "random",
-          rnlimit: "5",
-          format: "json"
-        }
-
-     })
-    .then(data => {this.processData(data)});
+  processData(data){
+    console.log(data);
+    var pages = data.query.pages;
+    var keys = Object.keys(pages);
+    var untreatedHtml = pages[keys[0]].revisions['0']['*'];
+    var text = untreatedHtml;
+    this.setState({articleText: text});
   }
-  componentDidRender() {
-    getData(); //?
+  getData(title){
+    var url = "/pages/" + title;
+    axios(url)
+    .then(data => {console.log(data)});
+    //.then(data => {this.processData(data)});
+  }
+  componentDidMount() {
+    this.getData(); 
   }
   render() {
     //These plastic pieces will have gradients to make them seem more real
