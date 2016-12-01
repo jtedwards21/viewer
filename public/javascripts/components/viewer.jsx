@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import JQuery from "jquery";
 
 export default class Viewer extends React.Component {
   constructor() {
@@ -19,8 +20,8 @@ export default class Viewer extends React.Component {
     var text = untreatedHtml;
     text = this.rB(text);
     text = this.processCitations(text);
-    console.log(text);
     this.setState({articleText: text});
+    JQuery(".wiki-text").html(text);
   }
   getData(title){
     var url = "/pages/" + title;
@@ -38,7 +39,7 @@ export default class Viewer extends React.Component {
   return r;
   }
   processCitations(text) {
-  html = text.split('{{');
+  var html = text.split('{{');
   html = html.join('<span class="cite">');
   html = html.split('}}');
   html = html.join('</span>');
