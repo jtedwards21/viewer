@@ -38,7 +38,13 @@ export default class Viewer extends React.Component {
       <div className="innerPlastic">
         <div className="inner-container">
 	  <div className="brandName">Wikipedia Viewer</div>
-	  <div className="screen"></div>
+	  <div className="screen">
+	    <div className="wiki-page">
+		<div className="wiki-title"></div>
+		<img className="wiki-img" />
+		<div className="wiki-text"></div>
+	    </div>
+	  </div>
  	</div>
         <div className="bottomBlocks">
 	    <div className="controls">
