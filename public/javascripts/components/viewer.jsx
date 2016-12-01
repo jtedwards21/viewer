@@ -22,6 +22,8 @@ export default class Viewer extends React.Component {
     text = this.processCitations(text);
     this.setState({articleText: text});
     JQuery(".wiki-text").html(text);
+    JQuery(".ln").attr("href", "https://en.wikipedia.org/wiki/" + (JQuery(this).text()));
+    
   }
   getData(title){
     var url = "/pages/" + title;
@@ -33,9 +35,9 @@ export default class Viewer extends React.Component {
   }
   rB(text) {
   var r = text.split('[[');
-  var r = r.join('<span class="ln">');
+  var r = r.join('<a class="ln">');
   var r = r.split(']]');
-  var r = r.join('</span>');
+  var r = r.join('</a>');
   return r;
   }
   processCitations(text) {

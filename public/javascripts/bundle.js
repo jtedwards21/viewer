@@ -21596,6 +21596,7 @@
 	      text = this.processCitations(text);
 	      this.setState({ articleText: text });
 	      (0, _jquery2.default)(".wiki-text").html(text);
+	      (0, _jquery2.default)(".ln").attr("href", "https://en.wikipedia.org/wiki/" + (0, _jquery2.default)(this).text());
 	    }
 	  }, {
 	    key: "getData",
@@ -21616,9 +21617,9 @@
 	    key: "rB",
 	    value: function rB(text) {
 	      var r = text.split('[[');
-	      var r = r.join('<span class="ln">');
+	      var r = r.join('<a class="ln">');
 	      var r = r.split(']]');
-	      var r = r.join('</span>');
+	      var r = r.join('</a>');
 	      return r;
 	    }
 	  }, {

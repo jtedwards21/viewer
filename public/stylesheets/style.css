@@ -5,30 +5,39 @@
   src: url("Jambo.otf") format("opentype");
 }
 
+@font-face {
+  font-family: Denominator;
+  font-style: normal;
+  font-weight: normal;
+  src: url("Denominator.ttf") format('truetype');
+}
+
 body {
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-left: auto;
   padding-right: auto;
+  background-image: url(../img/wood.jpg);
+  background-position: center;
 }
 
 #content {
   padding-left: auto;
   padding-right: auto;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .plastic {
-  width: 30vw;
-  height: 40vh;
-　　float: none;
-  margin: 0 auto;
+  width: 400px;
+  position: absolute;
+  height: 500px;;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24);
+  left: 35%;
 }
 
 .outerPlastic {
-　　width: 30vw;
-  height: 40vh;
+　　width: 400px;
+  height: 500px;
   z-index: 11;
   float: none;
   position: absolute;
@@ -37,11 +46,12 @@ background: -moz-radial-gradient(center, ellipse cover, #131313 0%, #1c1c1c 9%, 
 background: -webkit-radial-gradient(center, ellipse cover, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#000000 49%,#2c2c2c 50%,#474747 61%,#666666 75%,#595959 88%,#4c4c4c 100%); /* Chrome10-25,Safari5.1-6 */
 background: radial-gradient(ellipse at center, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#000000 49%,#2c2c2c 50%,#474747 61%,#666666 75%,#595959 88%,#4c4c4c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#4c4c4c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  left: 35%;
 }
 
 .innerPlastic {
-　　width: 30vw;
-  height: 40vh;
+　　width: 400px;
+  height: 500px;
   text-align: center;
   z-index: 12;
   padding-left: 10px;
@@ -53,18 +63,26 @@ background: -moz-radial-gradient(center, ellipse cover, #87e0fd 0%, #53cbf1 40%,
 background: -webkit-radial-gradient(center, ellipse cover, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
 background: radial-gradient(ellipse at center, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  left: 35%;
 }
 
 .brandName　{
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-family: Jambo;
 }
 
 .screen {
-  width: 29vw;
-  height: 27vh;
+  width: 400px;
+  height: 440px;
   background-color: white;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  text-align: justify;
+  font-family: Denominator;
+  overflow: hidden;
+  
 }
 
 .controls {
@@ -72,8 +90,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 }
 
 .leftButton{
-  width: 2vw;
-  height: 2vw;
+  width: 20px;
+  height: 20px;
   background-color: black;
   margin-right: 3px;
   border-radius: 50%;
@@ -81,8 +99,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 }
 
 .rightButton {
-  width: 2vw;
-  height: 2vw;
+  width: 20px;
+  height: 20px;
   background-color: black;
   margin-left: 3px;
   border-radius: 50%;
