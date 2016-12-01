@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Jambo;
+  font-style: normal;
+  font-weight: normal;
+  src: url("Jambo.otf") format("opentype");
+}
+
 body {
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -20,6 +27,11 @@ body {
 }
 
 .outerPlastic {
+　　width: 30vw;
+  height: 40vh;
+  z-index: 11;
+  float: none;
+  position: absolute;
   background: #131313; /* Old browsers */
 background: -moz-radial-gradient(center, ellipse cover, #131313 0%, #1c1c1c 9%, #2b2b2b 24%, #111111 40%, #000000 49%, #2c2c2c 50%, #474747 61%, #666666 75%, #595959 88%, #4c4c4c 100%); /* FF3.6-15 */
 background: -webkit-radial-gradient(center, ellipse cover, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#000000 49%,#2c2c2c 50%,#474747 61%,#666666 75%,#595959 88%,#4c4c4c 100%); /* Chrome10-25,Safari5.1-6 */
@@ -27,6 +39,57 @@ background: radial-gradient(ellipse at center, #131313 0%,#1c1c1c 9%,#2b2b2b 24%
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#4c4c4c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.innerPlastic {
+　　width: 30vw;
+  height: 40vh;
+  text-align: center;
+  z-index: 12;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  position: absolute;
+background: #87e0fd; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #87e0fd 0%, #53cbf1 40%, #05abe0 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
 
+.brandName　{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-family: Jambo;
+}
 
+.screen {
+  width: 29vw;
+  height: 27vh;
+  background-color: white;
+}
+
+.controls {
+  display: inline-flex;
+}
+
+.leftButton{
+  width: 2vw;
+  height: 2vw;
+  background-color: black;
+  margin-right: 3px;
+  border-radius: 50%;
+  color: white;
+}
+
+.rightButton {
+  width: 2vw;
+  height: 2vw;
+  background-color: black;
+  margin-left: 3px;
+  border-radius: 50%;
+  color: white;
+}
+
+.bottomBlocks {
+  background: inherit;
+}
 

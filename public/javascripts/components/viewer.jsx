@@ -32,20 +32,23 @@ export default class Viewer extends React.Component {
   render() {
     //These plastic pieces will have gradients to make them seem more real
     return (
-      <div className="plastic">
-        <div className="outerPlastic"></div>
-	<div className="innerPlasic">
+    <div>
+      <div className="plastic"></div>
+      <div className="outerPlastic"></div>
+      <div className="innerPlastic">
+        <div className="inner-container">
 	  <div className="brandName">Wikipedia Viewer</div>
 	  <div className="screen"></div>
-          <div className="bottomBlocks">
+ 	</div>
+        <div className="bottomBlocks">
 	    <div className="controls">
-		<div className="leftButton"></div>
-	        <div className="centerButton"></div>
-	        <div className="rightButton"></div>
+	      <div className="leftButton"></div>
+	      <div className="centerButton"></div>
+	      <div className="rightButton"></div>
 	    </div>
-	  </div>
 	</div>
       </div>
+    </div>
     );
   }
 }

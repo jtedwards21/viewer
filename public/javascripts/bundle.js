@@ -21611,17 +21611,22 @@
 	      //These plastic pieces will have gradients to make them seem more real
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "plastic" },
+	        null,
+	        _react2.default.createElement("div", { className: "plastic" }),
 	        _react2.default.createElement("div", { className: "outerPlastic" }),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "innerPlasic" },
+	          { className: "innerPlastic" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "brandName" },
-	            "Wikipedia Viewer"
+	            { className: "inner-container" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "brandName" },
+	              "Wikipedia Viewer"
+	            ),
+	            _react2.default.createElement("div", { className: "screen" })
 	          ),
-	          _react2.default.createElement("div", { className: "screen" }),
 	          _react2.default.createElement(
 	            "div",
 	            { className: "bottomBlocks" },
