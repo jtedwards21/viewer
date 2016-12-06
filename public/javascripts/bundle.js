@@ -21577,7 +21577,9 @@
 	    var _this = _possibleConstructorReturn(this, (Viewer.__proto__ || Object.getPrototypeOf(Viewer)).call(this));
 
 	    _this.state = {
-	      articleText: ""
+	      articleText: "",
+	      nOfPages: 0,
+	      currentPage: 0
 	    };
 
 	    _this.getData.bind(_this);
@@ -21596,7 +21598,16 @@
 	      text = this.processCitations(text);
 	      this.setState({ articleText: text });
 	      (0, _jquery2.default)(".wiki-text").html(text);
-	      (0, _jquery2.default)(".ln").attr("href", "https://en.wikipedia.org/wiki/" + (0, _jquery2.default)(this).text());
+	      this.removeCitations(text);
+	    }
+
+	    //Lets try to take all of the citations out first
+
+	  }, {
+	    key: "removeCitations",
+	    value: function removeCitations(text) {
+	      var re = new RegExp('<span class="cite">.*</span>');
+	      console.log(text.split(re));
 	    }
 	  }, {
 	    key: "getData",
@@ -21629,6 +21640,7 @@
 	      html = html.join('<span class="cite">');
 	      html = html.split('}}');
 	      html = html.join('</span>');
+
 	      return html;
 	    }
 	  }, {

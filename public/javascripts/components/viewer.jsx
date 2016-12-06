@@ -7,7 +7,9 @@ export default class Viewer extends React.Component {
     super();
 
     this.state = {
-      articleText : ""
+      articleText : "",
+　　　　　　nOfPages: 0,
+      currentPage: 0
     };
     
     this.getData.bind(this);
@@ -22,8 +24,13 @@ export default class Viewer extends React.Component {
     text = this.processCitations(text);
     this.setState({articleText: text});
     JQuery(".wiki-text").html(text);
-    JQuery(".ln").attr("href", "https://en.wikipedia.org/wiki/" + (JQuery(this).text()));
-    
+    this.removeCitations(text);
+  }
+
+  //Lets try to take all of the citations out first
+  removeCitations(text){
+    var re = new RegExp('<span class="cite">.*</span>')
+    console.log(text.split(re))
   }
   getData(title){
     var url = "/pages/" + title;
@@ -45,6 +52,7 @@ export default class Viewer extends React.Component {
   html = html.join('<span class="cite">');
   html = html.split('}}');
   html = html.join('</span>');
+  
   return html;
   }
   render() {
