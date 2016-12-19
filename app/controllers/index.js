@@ -1,21 +1,12 @@
-import React from "react";
-import axios from "axios";
-import JQuery from "jquery";
-
-export default class Viewer extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
+var Viewer = React.createClass({
+  getInitialState() {
+    return {
       articleText : "",
 　　　　　　nOfPages: 0,
       currentPage: 0
     };
-    
-    this.getData.bind(this);
-    this.processData.bind(this);
-  }
-  processData(data){
+  },
+　 processData(data){
     var pages = data.data.query.pages;
     var keys = Object.keys(pages);
     var untreatedHtml = pages[keys[0]].revisions['0']['*'];
@@ -23,30 +14,29 @@ export default class Viewer extends React.Component {
     text = this.rB(text);
     text = this.processCitations(text);
     this.setState({articleText: text});
-    JQuery(".wiki-text").html(text);
+    $(".wiki-text").html(text);
     this.removeCitations(text);
-  }
-
+  },
   //Lets try to take all of the citations out first
   removeCitations(text){
     var re = new RegExp('<span class="cite">.*</span>')
     console.log(text.split(re))
-  }
+  },
   getData(title){
     var url = "/pages/" + title;
     axios(url)
     .then(data => {this.processData(data)});
-  }
+  },
   componentDidMount() {
     this.getData("cat"); 
-  }
+  },
   rB(text) {
   var r = text.split('[[');
   var r = r.join('<a class="ln">');
   var r = r.split(']]');
   var r = r.join('</a>');
   return r;
-  }
+  },
   processCitations(text) {
   var html = text.split('{{');
   html = html.join('<span class="cite">');
@@ -54,7 +44,7 @@ export default class Viewer extends React.Component {
   html = html.join('</span>');
   
   return html;
-  }
+  },
   render() {
     //These plastic pieces will have gradients to make them seem more real
     return (
@@ -83,4 +73,9 @@ export default class Viewer extends React.Component {
     </div>
     );
   }
-}
+})
+
+ReactDOM.render(
+  <Viewer  />,
+  document.getElementById('content')
+)
