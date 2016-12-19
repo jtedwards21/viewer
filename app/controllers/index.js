@@ -45,12 +45,12 @@ var Viewer = React.createClass({
     
     //These plastic pieces will have gradients to make them seem more real
     return (
-    <div>
-      <div className="input-group">
+    <div className="row">
+      <div id="search" className="input-group col-md-6 col-md-offset-3">
 		    <input type="text" id="search-bar" onChange={this.handleChange} value={this.state.search} className="form-control" aria-describedby="basic-addon1"  placeholder="Search For a Term..." />
 		    <span id="orange-button" className="input-group-addon" onClick={this.search} id="basic-addon1">Go</span>
       </div>
-      <div>
+      <div id="page-container" className="col-md-12">
 	{pages}
       </div>
     </div>
@@ -63,9 +63,9 @@ var Page = React.createClass({
     return {}
   },
   render(){return(
-    <div className="page-box">
-      <h3>{this.props.title}</h3>
-      <p>{this.props.description}</p>
+    <div className="page-box col-md-6">
+      <h3　className="col-md-4">{this.props.title}:</h3>
+      <p className="col-md-8">{this.props.description}</p>
     </div>)
   }
 });

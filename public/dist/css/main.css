@@ -12,3 +12,49 @@
   src: url("Denominator.ttf") format('truetype');
 }
 
+body h1 {
+  color: white;
+  font-family: Jambo;
+  margin-top: 6vh;
+}
+
+#background {
+  background-color: #625049;
+}
+
+#page-container {
+  margin-top: 2vh;
+}
+
+.page-box h3 {
+  font-family: Jambo;
+  margin-top: 10px;
+}
+
+.page-box p {
+  margin-top: 10px;
+  font-family: Denominator;
+  font-size: 1.3em;
+}
+
+.page-box {
+  background-color: #6F5A52;
+  padding: 5px;
+  color: #EEC2B1;
+  height: 120px;
+  border: 3px solid #625049;
+  border-radius: 10px;
+  display: flex;
+}
+
+#search {
+  margin-top: 5vh;
+  margin-bottom: 10px;
+}
+
+#content {
+  padding-top: 20px;
+  border-radius: 10px;
+　　background-color: #373B55;
+  margin-bottom: 20px;
+}
