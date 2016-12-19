@@ -7,7 +7,7 @@ module.exports = function(app) {
 		});
 　　　　　　　　app.route("/pages/:query")
           .get(function(req, res) {
-              var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=' + req.params.query;
+              var url = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + req.params.query;
 
               var options = {url: url}
               var callback = function(err, response, body){ res.send(body);}

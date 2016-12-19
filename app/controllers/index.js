@@ -1,79 +1,74 @@
+
 var Viewer = React.createClass({
   getInitialState() {
     return {
-      articleText : "",
-　　　　　　nOfPages: 0,
-      currentPage: 0
+      search: "",
+      pages: []
     };
   },
-　 processData(data){
+　　processData(data){
+    var p = [];
     var pages = data.data.query.pages;
     var keys = Object.keys(pages);
-    var untreatedHtml = pages[keys[0]].revisions['0']['*'];
-    var text = untreatedHtml;
-    text = this.rB(text);
-    text = this.processCitations(text);
-    this.setState({articleText: text});
-    $(".wiki-text").html(text);
-    this.removeCitations(text);
+    for(var i = 0; i < keys.length; i++){
+	p.push(pages[keys[i]]);
+    }
+    pages = p;
+    pages = pages.map(function(p){
+	var page = {};
+	page.title = p.title;
+	page.description = p.extract;
+	page.index = p.index;
+        return page;
+    });
+
+    this.setState({pages:pages});
   },
-  //Lets try to take all of the citations out first
-  removeCitations(text){
-    var re = new RegExp('<span class="cite">.*</span>')
-    console.log(text.split(re))
-  },
-  getData(title){
-    var url = "/pages/" + title;
-    axios(url)
+  search() {
+    var url = "/pages/" + this.state.search;
+    axios.get(url)
     .then(data => {this.processData(data)});
   },
-  componentDidMount() {
-    this.getData("cat"); 
-  },
-  rB(text) {
-  var r = text.split('[[');
-  var r = r.join('<a class="ln">');
-  var r = r.split(']]');
-  var r = r.join('</a>');
-  return r;
-  },
-  processCitations(text) {
-  var html = text.split('{{');
-  html = html.join('<span class="cite">');
-  html = html.split('}}');
-  html = html.join('</span>');
-  
-  return html;
+  handleChange(e){
+    this.setState({search: e.target.value})
   },
   render() {
+    console.log(this.state.pages);
+　　　　var pages = this.state.pages;
+    pages.sort(function(r){
+	return r.index;
+    });
+    pages = pages.map(function(p){
+	return <Page key={p.index} title={p.title} description={p.description}/>
+    })
+    
+    
     //These plastic pieces will have gradients to make them seem more real
     return (
     <div>
-      <div className="plastic"></div>
-      <div className="outerPlastic"></div>
-      <div className="innerPlastic">
-        <div className="inner-container">
-	  <div className="brandName">Wikipedia Viewer</div>
-	  <div className="screen">
-	    <div className="wiki-page">
-		<div className="wiki-title"></div>
-		<img className="wiki-img" />
-		<div className="wiki-text"></div>
-	    </div>
-	  </div>
- 	</div>
-        <div className="bottomBlocks">
-	    <div className="controls">
-	      <div className="leftButton"></div>
-	      <div className="centerButton"></div>
-	      <div className="rightButton"></div>
-	    </div>
-	</div>
+      <div className="input-group">
+		    <input type="text" id="search-bar" onChange={this.handleChange} value={this.state.search} className="form-control" aria-describedby="basic-addon1"  placeholder="Search For a Term..." />
+		    <span id="orange-button" className="input-group-addon" onClick={this.search} id="basic-addon1">Go</span>
+      </div>
+      <div>
+	{pages}
       </div>
     </div>
     );
   }
-})
+});
+
+var Page = React.createClass({
+  getInitialState(){
+    return {}
+  },
+  render(){return(
+    <div className="page-box">
+      <h3>{this.props.title}</h3>
+      <p>{this.props.description}</p>
+    </div>)
+  }
+});
 
 ReactDOM.render(
   <Viewer  />,
