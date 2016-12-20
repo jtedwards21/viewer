@@ -24,6 +24,9 @@ var Viewer = React.createClass({
 
     this.setState({pages:pages});
   },
+  redirect(){
+    console.log('redirect');
+  },
   search() {
     var url = "/pages/" + this.state.search;
     axios.get(url)

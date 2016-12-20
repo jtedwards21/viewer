@@ -12,10 +12,34 @@
   src: url("Denominator.ttf") format('truetype');
 }
 
+
+#basic-addon1 {
+  cursor: pointer;
+}
+
 body h1 {
-  color: white;
+  color: #EEC2B1;
   font-family: Jambo;
   margin-top: 6vh;
+}
+
+
+a {
+  color: black;
+}
+
+#github-img {
+  width: 50px;
+  color: black;
+}
+
+#github-container {
+  color: black;
+}
+
+#github-container p {
+  font-family: Denominator;
+  font-size: 1.5em;
 }
 
 #background {
