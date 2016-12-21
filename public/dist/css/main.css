@@ -24,24 +24,30 @@ body h1 {
 }
 
 
-a {
-  color: black;
+#link-container {
+
+  position: fixed;
+  top: 95vh;
 }
 
-#github-img {
+#github-img{
   width: 50px;
-  color: black;
+}
+
+a {
+  color: #52486F;
 }
 
 #github-container {
-  color: black;
+  width: 300px;
+  text-align: center;
 }
 
 #github-container p {
   font-family: Denominator;
   font-size: 1.5em;
+  color: black;
 }
-
 #background {
   background-color: #625049;
 }
