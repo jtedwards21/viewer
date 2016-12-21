@@ -49,7 +49,7 @@ var Viewer = React.createClass({
     
     //These plastic pieces will have gradients to make them seem more real
     return (
-    <div className="row">
+    <div id="r" className="row">
       <div id="search" className="input-group col-md-6 col-md-offset-3">
 		    <input type="text" id="search-bar" onChange={this.handleChange} value={this.state.search} className="form-control" aria-describedby="basic-addon1"  placeholder="Search For a Term..." />
 		    <span id="orange-button" className="input-group-addon" onClick={this.search} id="basic-addon1">Go</span>
