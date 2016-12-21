@@ -68,6 +68,7 @@ a {
 }
 
 .page-box {
+　　cursor: pointer;
   background-color: #6F5A52;
   padding: 5px;
   color: #EEC2B1;

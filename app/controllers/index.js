@@ -15,7 +15,11 @@ var Viewer = React.createClass({
     }
     pages = p;
     pages = pages.map(function(p){
+	var article = p.title;
+        article = article.replace(" ", "_");
+        var url = "https://en.wikipedia.org/wiki/" + article
 	var page = {};
+        page.url = url;
 	page.title = p.title;
 	page.description = p.extract;
 	page.index = p.index;
@@ -38,11 +42,8 @@ var Viewer = React.createClass({
   render() {
     console.log(this.state.pages);
 　　　　var pages = this.state.pages;
-    pages.sort(function(r){
-	return r.index;
-    });
     pages = pages.map(function(p){
-	return <Page key={p.index} title={p.title} description={p.description}/>
+	return <Page url={p.url} key={p.index} title={p.title} description={p.description}/>
     })
     
     
@@ -65,8 +66,14 @@ var Page = React.createClass({
   getInitialState(){
     return {}
   },
-  render(){return(
-    <div className="page-box col-md-6">
+  redirect(){
+    var url = this.props.url
+    window.location = url;
+  },
+  render(){
+    var s = {cursor: "pointer"};
+	return(
+    <div style={s} onClick={this.redirect} className="page-box col-md-6">
       <h3　className="col-md-4">{this.props.title}:</h3>
       <p className="col-md-8">{this.props.description}</p>
     </div>)
